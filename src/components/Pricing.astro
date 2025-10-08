@@ -1,0 +1,302 @@
+---
+const plans = [
+  {
+    name: 'Starter',
+    price: '29',
+    period: 'month',
+    description: 'Perfect for small teams getting started',
+    features: [
+      'Up to 10 team members',
+      '100 GB storage',
+      'Basic analytics',
+      'Email support',
+      'Core integrations'
+    ],
+    cta: 'Start Free Trial',
+    highlighted: false
+  },
+  {
+    name: 'Professional',
+    price: '79',
+    period: 'month',
+    description: 'For growing teams with advanced needs',
+    features: [
+      'Up to 50 team members',
+      '1 TB storage',
+      'Advanced analytics',
+      'Priority support',
+      'All integrations',
+      'Custom workflows',
+      'API access'
+    ],
+    cta: 'Start Free Trial',
+    highlighted: true
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For large organizations',
+    features: [
+      'Unlimited team members',
+      'Unlimited storage',
+      'Custom analytics',
+      '24/7 dedicated support',
+      'Custom integrations',
+      'Advanced security',
+      'SLA guarantee',
+      'Dedicated account manager'
+    ],
+    cta: 'Contact Sales',
+    highlighted: false
+  }
+];
+---
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-subtitle">
+        Choose the plan that's right for your team. All plans include a 14-day free trial.
+      </p>
+    </div>
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <div class={`pricing-card ${plan.highlighted ? 'highlighted' : ''}`}>
+          {plan.highlighted && <div class="badge">Most Popular</div>}
+          <div class="plan-header">
+            <h3 class="plan-name">{plan.name}</h3>
+            <div class="plan-price">
+              {plan.price === 'Custom' ? (
+                <span class="price-custom">Custom</span>
+              ) : (
+                <>
+                  <span class="price-currency">$</span>
+                  <span class="price-amount">{plan.price}</span>
+                  <span class="price-period">/{plan.period}</span>
+                </>
+              )}
+            </div>
+            <p class="plan-description">{plan.description}</p>
+          </div>
+          <ul class="plan-features">
+            {plan.features.map((feature) => (
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a href="#" class={`btn ${plan.highlighted ? 'btn-primary' : 'btn-outline'}`}>
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    padding: 100px 20px;
+    background: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing-card.highlighted {
+    border-color: #667eea;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+    transform: scale(1.05);
+  }
+
+  .pricing-card.highlighted:hover {
+    transform: scale(1.05) translateY(-4px);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .plan-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    margin-bottom: 16px;
+    color: #1f2937;
+  }
+
+  .price-currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    vertical-align: top;
+  }
+
+  .price-amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .price-period {
+    font-size: 1.1rem;
+    color: #6b7280;
+  }
+
+  .price-custom {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+
+  .plan-description {
+    color: #6b7280;
+    font-size: 1rem;
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    color: #4b5563;
+    font-size: 1rem;
+  }
+
+  .check-icon {
+    color: #667eea;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+  }
+
+  .btn-outline:hover {
+    background: #667eea;
+    color: white;
+  }
+
+  @media (max-width: 968px) {
+    .pricing {
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-card.highlighted {
+      transform: scale(1);
+    }
+
+    .pricing-card.highlighted:hover {
+      transform: translateY(-4px);
+    }
+  }
+</style>
+

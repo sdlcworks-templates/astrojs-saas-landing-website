@@ -1,0 +1,266 @@
+---
+---
+
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">🚀 SaaSProduct</a>
+    
+    <button class="mobile-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#" class="nav-link-secondary">Documentation</a>
+    </div>
+    
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Log In</a>
+      <a href="#pricing" class="btn-signup">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.querySelector('.mobile-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navActions = document.querySelector('.nav-actions');
+  
+  toggle?.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navLinks?.classList.toggle('active');
+    navActions?.classList.toggle('active');
+  });
+  
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      navActions?.classList.remove('active');
+    });
+  });
+  
+  // Add shadow on scroll
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 20) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1f2937;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo:hover {
+    color: #667eea;
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #1f2937;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-links a:hover {
+    color: #667eea;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #667eea;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .nav-link-secondary {
+    opacity: 0.8;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-login {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    transition: color 0.2s ease;
+  }
+
+  .btn-login:hover {
+    color: #667eea;
+  }
+
+  .btn-signup {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 24px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  }
+
+  .btn-signup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+
+  @media (max-width: 968px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .nav-links,
+    .nav-actions {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 20px;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links.active,
+    .nav-actions.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-actions {
+      top: auto;
+      bottom: auto;
+      position: relative;
+      padding-top: 0;
+    }
+
+    .nav-actions.active {
+      display: flex;
+    }
+
+    .nav-links {
+      justify-content: flex-start;
+    }
+
+    .nav-links a {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1.1rem;
+    }
+
+    .btn-login,
+    .btn-signup {
+      width: 100%;
+      text-align: center;
+      padding: 14px 24px;
+    }
+  }
+</style>
+

@@ -1,0 +1,175 @@
+---
+const testimonials = [
+  {
+    quote: "This platform transformed how our team collaborates. We've seen a 40% increase in productivity since switching.",
+    author: 'Sarah Chen',
+    role: 'VP of Engineering',
+    company: 'TechCorp',
+    avatar: '👩‍💼'
+  },
+  {
+    quote: "The best investment we've made in our tech stack. The ROI was clear within the first month.",
+    author: 'Michael Rodriguez',
+    role: 'CEO',
+    company: 'StartupXYZ',
+    avatar: '👨‍💼'
+  },
+  {
+    quote: "Intuitive, powerful, and reliable. Our entire organization adopted it in days, not months.",
+    author: 'Emily Watson',
+    role: 'Product Manager',
+    company: 'InnovateCo',
+    avatar: '👩‍💻'
+  }
+];
+---
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Loved by teams worldwide</h2>
+      <p class="section-subtitle">
+        See what our customers have to say about their experience
+      </p>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <div class="quote-icon">❝</div>
+          <p class="testimonial-quote">{testimonial.quote}</p>
+          <div class="testimonial-author">
+            <div class="avatar">{testimonial.avatar}</div>
+            <div class="author-info">
+              <div class="author-name">{testimonial.author}</div>
+              <div class="author-role">{testimonial.role} at {testimonial.company}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 100px 20px;
+    background: #f9fafb;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    color: #667eea;
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-name {
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .author-role {
+    color: #6b7280;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+

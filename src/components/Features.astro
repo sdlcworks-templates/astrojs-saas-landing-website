@@ -1,0 +1,142 @@
+---
+const features = [
+  {
+    icon: '⚡',
+    title: 'Lightning Fast',
+    description: 'Built for speed with optimized performance that scales with your business needs.'
+  },
+  {
+    icon: '🔒',
+    title: 'Secure by Default',
+    description: 'Enterprise-grade security with end-to-end encryption and compliance certifications.'
+  },
+  {
+    icon: '🎨',
+    title: 'Beautiful Design',
+    description: 'Intuitive interface that your team will love, no training required.'
+  },
+  {
+    icon: '🔄',
+    title: 'Real-time Sync',
+    description: 'Collaborate seamlessly with instant updates across all devices and team members.'
+  },
+  {
+    icon: '📊',
+    title: 'Powerful Analytics',
+    description: 'Get insights that matter with comprehensive dashboards and custom reports.'
+  },
+  {
+    icon: '🚀',
+    title: 'Easy Integration',
+    description: 'Connect with your favorite tools through our extensive API and integrations.'
+  }
+];
+---
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Everything you need to succeed</h2>
+      <p class="section-subtitle">
+        Powerful features designed to help your team work smarter, not harder
+      </p>
+    </div>
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-icon">{feature.icon}</div>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-description">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 100px 20px;
+    background: #f9fafb;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+  }
+
+  .feature-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .features {
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
